@@ -1,0 +1,23 @@
+<input type="text" id="code-input">
+<button id="submit-button">Submit</button>
+<div id="message"></div>
+
+<script>
+  const submitButton = document.getElementById('submit-button');
+  const codeInput = document.getElementById('code-input');
+  const message = document.getElementById('message');
+
+  submitButton.addEventListener('click', function() {
+    const code = codeInput.value;
+    if (code === '445' || code === '556') {
+      if (localStorage.getItem(code)) {
+        message.innerHTML = 'This code has already been used';
+      } else {
+        localStorage.setItem(code, true);
+        message.innerHTML = 'Code accepted';
+      }
+    } else {
+      message.innerHTML = 'Invalid code';
+    }
+  });
+</script>
